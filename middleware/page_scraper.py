@@ -3,20 +3,21 @@ import time
 
 def page_scraper(url):
 	soup = requestSample(url)
+	
 	price = float(soup.find("span", class_="price-val").text.replace(" ",""))
-	currency = soup.find("span", class_="price-cur").text
+	currency = str(soup.find("span", class_="price-cur").text)
 	lat = float(soup.find(id="item_map").get("data-lat"))
 	lon = float(soup.find(id="item_map").get("data-lng"))	
 
 	# Filler in case there is no table on page
-	repaired = 				"N/A"
-	district = 				"N/A"
-	category = 				"N/A"
-	area = 						"N/A"
-	outer_area = 			"N/A"
-	rooms = 					"N/A"
+	repaired = 			"N/A"
+	district = 			"N/A"
+	category = 			"N/A"
+	area = 				"N/A"
+	outer_area = 		"N/A"
+	rooms = 			"N/A"
 	floor_actual = 		"N/A"
-	floor_max = 			"N/A"	
+	floor_max = 		"N/A"	
 
 	# Repaired
 	for z in soup.find_all("tr"):
@@ -108,15 +109,15 @@ def page_scraper(url):
 
 	return {
 		'price': 				price,
-		'currency': 		currency,
+		'currency': 			currency,
 		'lat': 					lat,
 		'lon': 					lon,
-		'repaired': 		repaired,
-		'district': 		district,
-		'category': 		category,
+		'repaired': 			repaired,
+		'district': 			district,
+		'category': 			category,
 		'area': 				area,
-		'outer_area':		outer_area,
+		'outer_area':			outer_area,
 		'rooms': 				rooms,
-		'floor_actual': floor_actual,
-		'floor_max': 		floor_max
+		'floor_actual': 		floor_actual,
+		'floor_max': 			floor_max
 	}
