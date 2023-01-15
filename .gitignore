@@ -4,3 +4,4 @@ wip.py
 _production_logs/
 _support_code/
 logs.txt
+.env
