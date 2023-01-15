@@ -7,8 +7,13 @@ import time
 from datetime import datetime
 import pytz
 import sys, os
+import os
+from dotenv import load_dotenv
 
-cluster = MongoClient("mongodb+srv://data_researcher_01:Gusik0915@newtestdb.pjkbipz.mongodb.net/?retryWrites=true&w=majority")
+load_dotenv()
+DB_URL = os.getenv("DB_URL")
+
+cluster = MongoClient(DB_URL)
 db = cluster["test_db"]
 collection = db["test_col"]
 
