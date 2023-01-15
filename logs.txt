@@ -1,2 +1,9 @@
 Started Scraping @ 2023-01-06 17:58:39.575757+04:00
 Done Scraping @ 2023-01-06 19:24:20.985720+04:00 // Ads Scraped: 3432
+
+Started Scraping @ 2023-01-15 02:12:40.180974+04:00
+Started Scraping @ 2023-01-15 15:11:04.844385+04:00
+Started Scraping @ 2023-01-15 15:18:34.326879+04:00
+Started Scraping @ 2023-01-15 15:32:16.592651+04:00
+Started Scraping @ 2023-01-15 15:32:30.286497+04:00
+Started Scraping @ 2023-01-15 15:35:37.964734+04:00

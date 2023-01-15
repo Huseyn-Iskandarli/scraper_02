@@ -21,7 +21,9 @@
 from middleware import request_page as rp
 z = rp.requestSample("https://bina.az/yasayis-kompleksleri/215")
 
-print(z.find_all("div", class_="someshit"))
+x = z.find("div")
+print(x)
+# print(z.find_all("div", class_="someshit"))
 
-for i in z.find_all("div", class_="something_random"):
-    print(i)
+# for i in z.find_all("div", class_="something_random"):
+#     print(i)
