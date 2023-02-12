@@ -3,8 +3,8 @@ import time
 
 def page_scraper(url, method):
 	soup = requestSample(url, "ordinary")
-	with open("test_html.txt", "a", encoding="utf-8") as file:
-		file.write(str(soup) + "\n ====================================================================")
+	# with open("test_html.txt", "a", encoding="utf-8") as file:
+	# 	file.write(str(soup) + "\n ====================================================================")
 
 	if(method == "old"):
 		
