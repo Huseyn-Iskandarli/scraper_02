@@ -30,7 +30,7 @@ with open("logs.txt", "a") as file:
 # All scraping will happen here =============================================
 # Collect all the links to the properties	todays_properties = []
 todays_properties = []
-pages = range(1)
+pages = range(300)
 for i in pages:
 	try:
 		soup = requestSample("https://bina.az/alqi-satqi?page=" + str(i + 1), "ordinary")
