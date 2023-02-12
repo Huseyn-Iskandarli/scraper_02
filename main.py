@@ -45,6 +45,7 @@ for i in pages:
 				todays_properties.append(link)
 		print("Page " + str(i+1) + " DONE")
 	except:
+		print("Something went wrong")
 		continue
 print(str(len(todays_properties)) + "properties")
     
