@@ -44,8 +44,8 @@ for i in pages:
 				link = "https://" + "bina.az/" + x.find("a", class_="item_link").get('href')
 				todays_properties.append(link)
 		print("Page " + str(i+1) + " DONE")
-	except:
-		print("Something went wrong")
+	except Exception as e:
+		print("Something went wrong" + str(e))
 		continue
 print(str(len(todays_properties)) + "properties")
     
