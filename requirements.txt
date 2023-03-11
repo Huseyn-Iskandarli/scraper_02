@@ -3,7 +3,6 @@ cloudscraper==1.2.68
 Flask==1.1.1
 formatData==1.1
 memory_profiler==0.61.0
-numpy==1.19.5
 pymongo==3.11.2
 python-dotenv==1.0.0
 pytz==2019.3
