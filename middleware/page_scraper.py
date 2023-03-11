@@ -1,8 +1,10 @@
 from middleware.request_page import requestSample
 import time
+from memory_profiler import profile
 
+@profile(precision=2)
 def page_scraper(url, method):
-	soup = requestSample(url, "ordinary")
+	soup = requestSample(url, "old")
 	# with open("test_html.txt", "a", encoding="utf-8") as file:
 	# 	file.write(str(soup) + "\n ====================================================================")
 
@@ -110,6 +112,7 @@ def page_scraper(url, method):
 				else:
 					floor_actual = "N/A"
 					floor_max = "N/A"
+		del soup
 		return {
 			'price': 				price,
 			'currency': 			currency,
@@ -178,7 +181,7 @@ def page_scraper(url, method):
 					break
 				else:
 					district = "N/A"
-
+		del soup
 		return {
 			'price': 				price,
 			'currency': 			currency,

@@ -10,7 +10,6 @@ import os
 from dotenv import load_dotenv
 import time
 
-
 # Time track for logging
 start = time.time()
 
@@ -31,9 +30,10 @@ with open("logs.txt", "a") as file:
 # Collect all the links to the properties	todays_properties = []
 todays_properties = []
 pages = range(300)
+
 for i in pages:
 	try:
-		soup = requestSample("https://bina.az/alqi-satqi?page=" + str(i + 1), "ordinary")
+		soup = requestSample("https://bina.az/alqi-satqi?page=" + str(i + 1), "old")
 		for x in soup.find_all("div", class_="items-i"):
 			# if not posted today
 			if not x.find("div", class_="city_when").text.replace(" ", "").split(",")[1][:5] == "dünən":

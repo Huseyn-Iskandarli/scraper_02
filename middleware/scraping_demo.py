@@ -1,4 +1,4 @@
-twebimport bs4 as bs
+import bs4 as bs
 import csv
 import time
 import random

@@ -26,6 +26,12 @@ def requestSample(u, type):
         r = requests.get(reqUrl)
         # print(r.text) # --> html
         soup = BeautifulSoup(r.content, 'html.parser')
+    elif type == "old":
+        req = Request(u, headers={"User-agent": "Mozilla/5.0"})
+        sauce = urlopen(req).read()
+        del req
+        soup = BeautifulSoup(sauce, "lxml")
+        del sauce
     else:
         print("Scraper not chosen")
     
