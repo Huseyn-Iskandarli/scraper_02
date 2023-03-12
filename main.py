@@ -104,7 +104,7 @@ to_email        = "huseyn_isk@hotmail.com"
 from_password   = email_password
 
 subject = "Bina AZ Scraping DONE"
-body = "Time done: " + str(datetime.now(pytz.timezone("Asia/Baku"))) + "\n" + "Properties scraped / Out of: " + str(z) + " / " + str(len(todays_properties))  + "\n" + "Time taken: " + str(time_taken/3600)
+body = "Time done: " + str(datetime.now(pytz.timezone("Asia/Baku"))) + "\n" + "Properties scraped / Out of: " + str(z) + " / " + str(len(todays_properties))  + "\n" + "Time taken (h): " + str(time_taken/3600)
 
 em = EmailMessage()
 

@@ -1,8 +1,6 @@
 from middleware.request_page import requestSample
 import time
-from memory_profiler import profile
 
-@profile(precision=2)
 def page_scraper(url, method):
 	soup = requestSample(url, "old")
 	# with open("test_html.txt", "a", encoding="utf-8") as file:
