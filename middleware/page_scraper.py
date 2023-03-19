@@ -1,4 +1,6 @@
 from middleware.request_page import requestSample
+import datetime
+import pytz
 import time
 
 def page_scraper(url, method):
@@ -21,7 +23,8 @@ def page_scraper(url, method):
 		outer_area = 		"N/A"
 		rooms = 			"N/A"
 		floor_actual = 		"N/A"
-		floor_max = 		"N/A"	
+		floor_max = 		"N/A"
+		dateScraped =		datetime.today(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
 
 		# Repaired
 		for z in soup.find_all("tr"):
@@ -123,9 +126,10 @@ def page_scraper(url, method):
 			'outer_area':			outer_area,
 			'rooms': 				rooms,
 			'floor_actual': 		floor_actual,
-			'floor_max': 			floor_max
+			'floor_max': 			floor_max,
+			'date':					dateScraped
 		}
-	elif method == "new":
+	elif (method == "new"):
 		
 		price = float(soup.find("span", class_="price-val").text.replace(" ",""))
 		currency = str(soup.find("span", class_="price-cur").text)
@@ -140,7 +144,8 @@ def page_scraper(url, method):
 		outer_area = 		"N/A"
 		rooms = 			"N/A"
 		floor_actual = 		"N/A"
-		floor_max = 		"N/A"	
+		floor_max = 		"N/A"
+		dateScraped = 		datetime.today(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
 
 		for i in soup.find("table", class_="parameters").find_all("tr"):
 			x = i.find_all("td")
@@ -179,6 +184,7 @@ def page_scraper(url, method):
 					break
 				else:
 					district = "N/A"
+		
 		del soup
 		return {
 			'price': 				price,
@@ -192,7 +198,8 @@ def page_scraper(url, method):
 			'outer_area':			outer_area,
 			'rooms': 				rooms,
 			'floor_actual': 		floor_actual,
-			'floor_max': 			floor_max
+			'floor_max': 			floor_max,
+			'date':					dateScraped
 		}
 	else:
 		return "N/A"
