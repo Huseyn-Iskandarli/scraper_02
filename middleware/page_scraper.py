@@ -25,6 +25,7 @@ def page_scraper(url, method):
 		floor_actual = 		"N/A"
 		floor_max = 		"N/A"
 		dateScraped =		datetime.datetime.now(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
+		datePosted = 		"N/A"
 
 		# Repaired
 		for z in soup.find_all("tr"):
@@ -113,6 +114,13 @@ def page_scraper(url, method):
 				else:
 					floor_actual = "N/A"
 					floor_max = "N/A"
+		
+  		# Date Posted
+		time_soup = soup.find("div", class_="item_info").find_all("p")
+		hour = time_soup[2].text.split(" ")[2].split(":")[0]
+		minute = time_soup[2].text.split(" ")[2].split(":")[1]
+		datePosted = datetime.datetime.now(pytz.timezone("Asia/Baku")).replace(hour=int(hour), minute=int(minute)) - datetime.timedelta(days=1)
+
 		del soup
 		return {
 			'price': 				price,
@@ -127,7 +135,8 @@ def page_scraper(url, method):
 			'rooms': 				rooms,
 			'floor_actual': 		floor_actual,
 			'floor_max': 			floor_max,
-			'date':					dateScraped
+			'date_scraped':			dateScraped,
+			'date_posted':			datePosted
 		}
 	elif (method == "new"):
 		
@@ -146,6 +155,7 @@ def page_scraper(url, method):
 		floor_actual = 		"N/A"
 		floor_max = 		"N/A"
 		dateScraped = 		datetime.datetime.now(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
+		datePosted = 		"N/A"
 
 		for i in soup.find("table", class_="parameters").find_all("tr"):
 			x = i.find_all("td")
@@ -185,6 +195,12 @@ def page_scraper(url, method):
 				else:
 					district = "N/A"
 		
+		# Date Posted
+		time_soup = soup.find("div", class_="item_info").find_all("p")
+		hour = time_soup[2].text.split(" ")[2].split(":")[0]
+		minute = time_soup[2].text.split(" ")[2].split(":")[1]
+		datePosted = datetime.datetime.now(pytz.timezone("Asia/Baku")).replace(hour=int(hour), minute=int(minute)) - datetime.timedelta(days=1)
+		
 		del soup
 		return {
 			'price': 				price,
@@ -199,7 +215,8 @@ def page_scraper(url, method):
 			'rooms': 				rooms,
 			'floor_actual': 		floor_actual,
 			'floor_max': 			floor_max,
-			'date':					dateScraped
+			'date_scraped':			dateScraped,
+			'date_posted':			datePosted
 		}
 	else:
 		return "N/A"
