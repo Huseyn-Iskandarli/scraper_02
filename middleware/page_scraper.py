@@ -24,7 +24,7 @@ def page_scraper(url, method):
 		rooms = 			"N/A"
 		floor_actual = 		"N/A"
 		floor_max = 		"N/A"
-		dateScraped =		datetime.today(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
+		dateScraped =		datetime.datetime.now(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
 
 		# Repaired
 		for z in soup.find_all("tr"):
@@ -145,7 +145,7 @@ def page_scraper(url, method):
 		rooms = 			"N/A"
 		floor_actual = 		"N/A"
 		floor_max = 		"N/A"
-		dateScraped = 		datetime.today(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
+		dateScraped = 		datetime.datetime.now(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
 
 		for i in soup.find("table", class_="parameters").find_all("tr"):
 			x = i.find_all("td")
