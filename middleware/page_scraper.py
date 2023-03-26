@@ -171,18 +171,20 @@ def page_scraper(url, method):
 			elif x[0].text == "Sahə":
 				if x[1].text.split(" ")[1] == "sot":
 					area 		= "N/A"				
-					outer_area 	= float(x[1].text.split(" ")[0])
+					outer_area 	= float(x[1].text.split(" ")[0])				
 				elif x[1].text.split(" ")[1] == "m²":
-					area 		= float(x[1].text.split(" ")[0])
-
-			elif x[0] == "Torpaq sahəsi":
+					area 		= float(x[1].text.split(" ")[0])				
+			
+			elif x[0].text == "Torpaq sahəsi":
 				if outer_area == "N/A":
 					outer_area = float(x[1].text.split(" ")[0])
 
-			elif x[0] == "Otaq sayı":
+			elif x[0].text == "Otaq sayı":
+				print("Otaq sayi")
 				rooms = int(x[1].text)
 
-			elif x[0] == "Mərtəbə":
+			elif x[0].text == "Mərtəbə":
+				print("Mertebe")
 				floor_actual 	= int(x[1].text.split("/")[0])
 				floor_max		= int(x[1].text.split("/")[0])
 
