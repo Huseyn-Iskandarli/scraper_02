@@ -157,39 +157,40 @@ def page_scraper(url, method):
 		dateScraped = 		datetime.datetime.now(pytz.timezone("Asia/Baku")) - datetime.timedelta(days=1)
 		datePosted = 		"N/A"
 
-		for i in soup.find("table", class_="parameters").find_all("tr"):
-			x = i.find_all("td")
-			if x[0].text == "Kateqoriya":
-				category = x[1].text
+		for i in soup.find("div", class_="product-properties").find_all("div", class_="product-properties__i"):
+			name = i.find("label", class_="product-properties__i-name").text
+			value = i.find("span", class_="product-properties__i-value").text
+			if name == "Kateqoriya":
+				category = value
 
-			elif x[0].text == "Təmir":
-				if x[1].text == "var":
+			elif name == "Təmir":
+				if value == "var":
 					repaired = True
 				else:
 					repaired = False
 
-			elif x[0].text == "Sahə":
-				if x[1].text.split(" ")[1] == "sot":
+			elif name == "Sahə":
+				if value.split(" ")[1] == "sot":
 					area 		= "N/A"				
-					outer_area 	= float(x[1].text.split(" ")[0])				
-				elif x[1].text.split(" ")[1] == "m²":
-					area 		= float(x[1].text.split(" ")[0])				
+					outer_area 	= float(value.split(" ")[0])				
+				elif value.split(" ")[1] == "m²":
+					area 		= float(value.split(" ")[0])				
 			
-			elif x[0].text == "Torpaq sahəsi":
+			elif name == "Torpaq sahəsi":
 				if outer_area == "N/A":
-					outer_area = float(x[1].text.split(" ")[0])
+					outer_area = float(value.split(" ")[0])
 
-			elif x[0].text == "Otaq sayı":
+			elif name == "Otaq sayı":
 				print("Otaq sayi")
-				rooms = int(x[1].text)
+				rooms = int(value)
 
-			elif x[0].text == "Mərtəbə":
+			elif name == "Mərtəbə":
 				print("Mertebe")
-				floor_actual 	= int(x[1].text.split("/")[0])
-				floor_max		= int(x[1].text.split("/")[0])
+				floor_actual 	= int(value.split("/")[0])
+				floor_max		= int(value.split("/")[0])
 
 		# District
-		c = soup.find("ul", class_="locations")
+		c = soup.find("ul", class_="product-extras")
 		for z in c.find_all("li"):
 				if z.text[-2:] == "r.":
 					district = z.text[:-2].strip()
@@ -198,9 +199,12 @@ def page_scraper(url, method):
 					district = "N/A"
 		
 		# Date Posted
-		time_soup = soup.find("div", class_="item_info").find_all("p")
-		hour = time_soup[2].text.split(" ")[2].split(":")[0]
-		minute = time_soup[2].text.split(" ")[2].split(":")[1]
+		time_soup = soup.find("div", class_="product-statistics").find("span", class_="product-statistics__i-text").text.split(" ")[2]
+
+		# time_soup = soup.find("div", class_="item_info").find_all("p")
+
+		hour = time_soup.split(":")[0]
+		minute = time_soup.split(":")[1]
 		datePosted = datetime.datetime.now(pytz.timezone("Asia/Baku")).replace(hour=int(hour), minute=int(minute)) - datetime.timedelta(days=1)
 		
 		del soup
