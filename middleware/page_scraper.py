@@ -181,11 +181,9 @@ def page_scraper(url, method):
 					outer_area = float(value.split(" ")[0])
 
 			elif name == "Otaq sayı":
-				print("Otaq sayi")
 				rooms = int(value)
 
 			elif name == "Mərtəbə":
-				print("Mertebe")
 				floor_actual 	= int(value.split("/")[0])
 				floor_max		= int(value.split("/")[0])
 
