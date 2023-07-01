@@ -30,7 +30,7 @@ with open("logs.txt", "a") as file:
 # Collect all the links to the properties	todays_properties = []
 todays_properties = []
 
-pages = [200]
+pages = range(300)
 # pages = range(1)
 
 for i in pages:
@@ -46,7 +46,6 @@ for i in pages:
 				link = "https://" + "bina.az/" + x.find("a", class_="item_link").get('href')
 				todays_properties.append(link)
 		print("Page " + str(i+1) + " DONE")
-		print(todays_properties)
 	except Exception as e:
 		print("Something went wrong" + str(e))
 		continue
